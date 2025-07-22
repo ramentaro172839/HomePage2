@@ -1,0 +1,303 @@
+/* ==========================================================================
+   らーめん太郎公式サイト - 和風モダンデザイン
+   ========================================================================== */
+
+/* カラーパレット
+   ベースカラー（墨色）: #1C1C1C
+   メインカラー（山吹色）: #F8B500  
+   テキストカラー（生成り色）: #F3F3F1
+   リンクカラー（藍色）: #165E83
+   ========================================================================== */
+
+/* リセット & ベース設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #F3F3F1;
+    background-color: #1C1C1C;
+    overflow-x: hidden;
+}
+
+/* コンテナ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* タイポグラフィ */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+/* ヘッダー */
+.header {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%);
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(248, 181, 0, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.main-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #F8B500;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.sub-title {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-weight: 300;
+    color: #F3F3F1;
+    opacity: 0.9;
+    letter-spacing: 0.05em;
+}
+
+/* メインコンテンツ */
+.main-content {
+    position: relative;
+}
+
+/* セクション共通スタイル */
+section {
+    padding: 5rem 0;
+    position: relative;
+}
+
+section:nth-child(even) {
+    background-color: rgba(248, 181, 0, 0.03);
+}
+
+.section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: #F8B500;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 2px;
+    background-color: #F8B500;
+}
+
+/* イントロダクション */
+.introduction {
+    text-align: center;
+}
+
+.intro-text {
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.9;
+    color: #F3F3F1;
+}
+
+/* らーめん太郎について */
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-text {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    margin-bottom: 2rem;
+    line-height: 2;
+    text-align: justify;
+    color: #F3F3F1;
+    opacity: 0.95;
+}
+
+.about-text:last-child {
+    margin-bottom: 0;
+}
+
+/* ギャラリー */
+.gallery {
+    background: linear-gradient(180deg, rgba(248, 181, 0, 0.05) 0%, transparent 100%);
+}
+
+.gallery-description {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    line-height: 1.9;
+    color: #F3F3F1;
+    opacity: 0.9;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgba(248, 181, 0, 0.1);
+    transition: all 0.3s ease;
+    aspect-ratio: 1;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(248, 181, 0, 0.3);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+}
+
+/* フッター */
+.footer {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 3rem 0 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(248, 181, 0, 0.2);
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-links {
+    margin-bottom: 2rem;
+}
+
+.social-link {
+    color: #165E83;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.social-link:hover {
+    color: #F8B500;
+}
+
+.social-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F8B500;
+    transition: width 0.3s ease;
+}
+
+.social-link:hover::after {
+    width: 100%;
+}
+
+.copyright {
+    font-size: 0.875rem;
+    color: #F3F3F1;
+    opacity: 0.7;
+    font-weight: 300;
+}
+
+/* アニメーション */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 0;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .header {
+        padding: 2rem 0;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    section {
+        padding: 2.5rem 0;
+    }
+    
+    .gallery-grid {
+        gap: 1rem;
+    }
+}

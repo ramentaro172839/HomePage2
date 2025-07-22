@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "pre_command": {
+      "enabled": true,
+      "script": "hooks/hook_pre_commands.sh"
+    },
+    "stop_words": {
+      "enabled": true,
+      "script": "hooks/hook_stop_words.sh"
+    },
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "hooks/enforce-uv.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
