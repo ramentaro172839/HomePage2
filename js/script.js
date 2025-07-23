@@ -4,12 +4,54 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // ローディングアニメーションの初期化
+    initLoadingAnimation();
+    
     // スクロールアニメーションの初期化
     initScrollAnimation();
     
     // スムーズスクロールの実装（古いブラウザ対応）
     initSmoothScroll();
+    
+    // ギャラリー画像の遅延読み込み（完了後にライトボックスを初期化）
+    initLazyLoading();
 });
+
+/**
+ * ローディングアニメーションの制御
+ */
+function initLoadingAnimation() {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    if (!loadingScreen) {
+        return;
+    }
+    
+    // ページの読み込み完了を待つ
+    window.addEventListener('load', function() {
+        // 最小表示時間を設定（1.5秒）
+        setTimeout(function() {
+            loadingScreen.classList.add('fade-out');
+            
+            // アニメーション完了後にDOMから削除
+            setTimeout(function() {
+                loadingScreen.remove();
+            }, 800); // CSS transition時間と同期
+        }, 1500);
+    });
+    
+    // フォールバック：長時間読み込みが続く場合の自動非表示
+    setTimeout(function() {
+        if (loadingScreen && !loadingScreen.classList.contains('fade-out')) {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(function() {
+                if (loadingScreen.parentNode) {
+                    loadingScreen.remove();
+                }
+            }, 800);
+        }
+    }, 5000); // 5秒後に強制非表示
+}
 
 /**
  * スクロールアニメーションの初期化
@@ -162,6 +204,92 @@ function initLazyLoading() {
 
         const lazyImages = document.querySelectorAll('img[data-src]');
         lazyImages.forEach(img => imageObserver.observe(img));
+    }
+    
+    // 遅延読み込み完了後にライトボックスを初期化
+    initLightbox();
+}
+
+/**
+ * ライトボックス機能の初期化
+ */
+function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const galleryLinks = document.querySelectorAll('.gallery-link');
+    
+    if (!lightbox || !lightboxImage || !lightboxClose || galleryLinks.length === 0) {
+        return;
+    }
+    
+    // ギャラリーリンクにクリックイベントを追加
+    galleryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // リンクのデフォルト動作（ページ遷移）をキャンセル
+            const image = this.querySelector('img');
+            showLightbox(this.href, image ? image.alt : '');
+        });
+        
+        // キーボードアクセシビリティ
+        link.setAttribute('tabindex', '0');
+        link.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const image = this.querySelector('img');
+                showLightbox(this.href, image ? image.alt : '');
+            }
+        });
+    });
+    
+    // 閉じるボタンのイベント
+    lightboxClose.addEventListener('click', hideLightbox);
+    
+    // 背景クリックで閉じる
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            hideLightbox();
+        }
+    });
+    
+    // ESCキーで閉じる
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            hideLightbox();
+        }
+    });
+    
+    /**
+     * ライトボックスを表示
+     */
+    function showLightbox(imageSrc, imageAlt) {
+        lightboxImage.src = imageSrc;
+        lightboxImage.alt = imageAlt;
+        lightbox.classList.add('active');
+        
+        // スクロールを無効にする
+        document.body.style.overflow = 'hidden';
+        
+        // フォーカスを閉じるボタンに移動
+        setTimeout(() => {
+            lightboxClose.focus();
+        }, 300);
+    }
+    
+    /**
+     * ライトボックスを非表示
+     */
+    function hideLightbox() {
+        lightbox.classList.remove('active');
+        
+        // スクロールを有効にする
+        document.body.style.overflow = '';
+        
+        // 画像をクリア
+        setTimeout(() => {
+            lightboxImage.src = '';
+            lightboxImage.alt = '';
+        }, 300);
     }
 }
 

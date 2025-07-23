@@ -15,21 +15,32 @@
     <link rel="stylesheet" href="cs/style.css">
 </head>
 <body>
+    <!-- ローディング画面 -->
+    <div id="loading-screen">
+        <div class="loading-text-container">
+            <h1 class="loading-title">らーめん太郎</h1>
+        </div>
+    </div>
+
     <header class="header fade-in">
+        <div class="ken-burns-bg"></div>
         <div class="header-content">
             <h1 class="main-title">らーめん太郎の世界へようこそ!</h1>
             <p class="sub-title">日々を彩る、遊び心いっぱいのイラストたち</p>
         </div>
+        <a href="#introduction" class="scroll-down-arrow" aria-label="スクロールして続きを読む"></a>
     </header>
 
     <main class="main-content">
         <!-- イントロダクション -->
-        <section class="introduction fade-in">
+        <section id="introduction" class="introduction fade-in">
             <div class="container">
-                <p class="intro-text">
-                    HamCupDAOコミュニティを中心に活動している「らーめん太郎」の公式サイトです。<br>
-                    これまでに制作した数々の作品をお楽しみください。
-                </p>
+                <div class="section-content">
+                    <p class="intro-text">
+                        HamCupDAOコミュニティを中心に活動している「らーめん太郎」の公式サイトです。<br>
+                        これまでに制作した数々の作品をお楽しみください。
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -37,21 +48,23 @@
         <section class="about fade-in">
             <div class="container">
                 <h2 class="section-title">らーめん太郎について</h2>
-                <div class="about-content">
-                    <p class="about-text">
-                        らーめん太郎は、HamCupDAOのコミュニティーを中心に活動しています。
-                    </p>
-                    <p class="about-text">
-                        コミュニティーでは、楽しくイラストを描いたり、音声配信をしたりと、日々創作活動を行っています。
-                    </p>
-                    <p class="about-text">
-                        名前は「らーめん太郎」ですが、実はパンが大好物です。<br>
-                        （もちろん、らーめんも大好きです！）
-                    </p>
-                    <p class="about-text">
-                        このサイトでは、僕がこれまでに描いてきたたくさんの作品をご紹介しています。<br>
-                        僕のユニークで楽しい世界観をぜひお楽しみください！
-                    </p>
+                <div class="section-content">
+                    <div class="about-content">
+                        <p class="about-text">
+                            らーめん太郎は、HamCupDAOのコミュニティーを中心に活動しています。
+                        </p>
+                        <p class="about-text">
+                            コミュニティーでは、楽しくイラストを描いたり、音声配信をしたりと、日々創作活動を行っています。
+                        </p>
+                        <p class="about-text">
+                            名前は「らーめん太郎」ですが、実はパンが大好物です。<br>
+                            （もちろん、らーめんも大好きです！）
+                        </p>
+                        <p class="about-text">
+                            このサイトでは、僕がこれまでに描いてきたたくさんの作品をご紹介しています。<br>
+                            僕のユニークで楽しい世界観をぜひお楽しみください！
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -60,19 +73,27 @@
         <section class="gallery fade-in">
             <div class="container">
                 <h2 class="section-title">作品ギャラリー</h2>
-                <p class="gallery-description">
-                    僕がこれまでに描いてきた作品の数々を年代別にご覧いただけます。<br>
-                    らーめん太郎の世界をどうぞお楽しみください。
-                </p>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="images/placeholder1.svg" alt="作品1" class="gallery-image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/placeholder2.svg" alt="作品2" class="gallery-image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/placeholder3.svg" alt="作品3" class="gallery-image">
+                <div class="section-content">
+                    <p class="gallery-description">
+                        僕がこれまでに描いてきた作品の数々を年代別にご覧いただけます。<br>
+                        らーめん太郎の世界をどうぞお楽しみください。
+                    </p>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <a href="images/全員集合_2025.jpg" class="gallery-link">
+                                <img src="images/全員集合_2025.jpg" alt="全員集合_2025" class="gallery-image">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="images/無題142.2023.06.18-05.18_20250708060732.JPG" class="gallery-link">
+                                <img src="images/無題142.2023.06.18-05.18_20250708060732.JPG" alt="無題142" class="gallery-image">
+                            </a>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="images/HamCup擬人化全員集合_20250628065929.jpg" class="gallery-link">
+                                <img src="images/HamCup擬人化全員集合_20250628065929.jpg" alt="HamCup擬人化全員集合" class="gallery-image">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,7 +104,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="social-links">
-                    <a href="#" class="social-link" aria-label="X (旧Twitter) アカウント">
+                    <a href="https://x.com/ramen_taro86" class="social-link" aria-label="X (旧Twitter) アカウント" target="_blank" rel="noopener noreferrer">
                         X (旧Twitter) アカウントはこちら
                     </a>
                 </div>
@@ -91,6 +112,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- ライトボックス -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="閉じる">&times;</button>
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
